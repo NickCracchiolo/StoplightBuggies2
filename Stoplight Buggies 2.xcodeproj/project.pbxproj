@@ -15,6 +15,27 @@
 		7A1106632149BD78002A0047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1106612149BD78002A0047 /* Main.storyboard */; };
 		7A1106652149BD79002A0047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1106642149BD79002A0047 /* Assets.xcassets */; };
 		7A1106682149BD79002A0047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1106662149BD79002A0047 /* LaunchScreen.storyboard */; };
+		7A1106762149BF79002A0047 /* StoplightStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106752149BF79002A0047 /* StoplightStateMachine.swift */; };
+		7A1106782149C06B002A0047 /* PausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106772149C06B002A0047 /* PausedState.swift */; };
+		7A11067A2149C0DE002A0047 /* RedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106792149C0DE002A0047 /* RedState.swift */; };
+		7A11067C2149C0E5002A0047 /* YellowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11067B2149C0E5002A0047 /* YellowState.swift */; };
+		7A11067E2149C0ED002A0047 /* GreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11067D2149C0ED002A0047 /* GreenState.swift */; };
+		7A1106822149C3DC002A0047 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106812149C3DC002A0047 /* Player.swift */; };
+		7A1106862149D112002A0047 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106852149D112002A0047 /* GameOverState.swift */; };
+		7A1106882149D341002A0047 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1106872149D341002A0047 /* StorageManager.swift */; };
+		7A11068D2149DFE0002A0047 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11068C2149DFE0002A0047 /* Car.swift */; };
+		7A110691214A3256002A0047 /* LightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A110690214A3256002A0047 /* LightState.swift */; };
+		7A110693214AC6BB002A0047 /* PauseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A110692214AC6BB002A0047 /* PauseScreen.swift */; };
+		7A110695214AC7EB002A0047 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A110694214AC7EB002A0047 /* HUD.swift */; };
+		7AA3B369214AD47200C4AA80 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B368214AD47200C4AA80 /* Button.swift */; };
+		7AA3B36B214B1D5800C4AA80 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B36A214B1D5800C4AA80 /* Game.swift */; };
+		7AA3B36E214B533E00C4AA80 /* MultiplayerNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B36D214B533E00C4AA80 /* MultiplayerNetworking.swift */; };
+		7AA3B370214B779800C4AA80 /* MatchmakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B36F214B779800C4AA80 /* MatchmakingViewController.swift */; };
+		7AA3B372214B79D000C4AA80 /* MultiplayerGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B371214B79D000C4AA80 /* MultiplayerGameViewController.swift */; };
+		7AA3B374214B7AA300C4AA80 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B373214B7AA300C4AA80 /* MainMenuViewController.swift */; };
+		7AA3B376214B8D0D00C4AA80 /* SBKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B375214B8D0D00C4AA80 /* SBKButton.swift */; };
+		7AA3B378214B982F00C4AA80 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B377214B982F00C4AA80 /* CreateGameViewController.swift */; };
+		7AC9C155214B9C2000C4A83E /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9C154214B9C2000C4A83E /* GameCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +49,27 @@
 		7A1106642149BD79002A0047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1106672149BD79002A0047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1106692149BD79002A0047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A1106752149BF79002A0047 /* StoplightStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoplightStateMachine.swift; sourceTree = "<group>"; };
+		7A1106772149C06B002A0047 /* PausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedState.swift; sourceTree = "<group>"; };
+		7A1106792149C0DE002A0047 /* RedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedState.swift; sourceTree = "<group>"; };
+		7A11067B2149C0E5002A0047 /* YellowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowState.swift; sourceTree = "<group>"; };
+		7A11067D2149C0ED002A0047 /* GreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenState.swift; sourceTree = "<group>"; };
+		7A1106812149C3DC002A0047 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7A1106852149D112002A0047 /* GameOverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
+		7A1106872149D341002A0047 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		7A11068C2149DFE0002A0047 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		7A110690214A3256002A0047 /* LightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightState.swift; sourceTree = "<group>"; };
+		7A110692214AC6BB002A0047 /* PauseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScreen.swift; sourceTree = "<group>"; };
+		7A110694214AC7EB002A0047 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		7AA3B368214AD47200C4AA80 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		7AA3B36A214B1D5800C4AA80 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7AA3B36D214B533E00C4AA80 /* MultiplayerNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerNetworking.swift; sourceTree = "<group>"; };
+		7AA3B36F214B779800C4AA80 /* MatchmakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchmakingViewController.swift; sourceTree = "<group>"; };
+		7AA3B371214B79D000C4AA80 /* MultiplayerGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameViewController.swift; sourceTree = "<group>"; };
+		7AA3B373214B7AA300C4AA80 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		7AA3B375214B8D0D00C4AA80 /* SBKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBKButton.swift; sourceTree = "<group>"; };
+		7AA3B377214B982F00C4AA80 /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
+		7AC9C154214B9C2000C4A83E /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,16 +103,85 @@
 			isa = PBXGroup;
 			children = (
 				7A1106572149BD78002A0047 /* AppDelegate.swift */,
-				7A1106592149BD78002A0047 /* GameScene.sks */,
-				7A11065B2149BD78002A0047 /* Actions.sks */,
-				7A11065D2149BD78002A0047 /* GameScene.swift */,
-				7A11065F2149BD78002A0047 /* GameViewController.swift */,
-				7A1106612149BD78002A0047 /* Main.storyboard */,
+				7A1106712149BE3A002A0047 /* Controllers */,
+				7A1106702149BE2E002A0047 /* Views */,
+				7A11066F2149BE29002A0047 /* Model */,
+				7AA3B36C214B532000C4AA80 /* Networking */,
 				7A1106642149BD79002A0047 /* Assets.xcassets */,
 				7A1106662149BD79002A0047 /* LaunchScreen.storyboard */,
 				7A1106692149BD79002A0047 /* Info.plist */,
 			);
 			path = "Stoplight Buggies 2";
+			sourceTree = "<group>";
+		};
+		7A11066F2149BE29002A0047 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A11065B2149BD78002A0047 /* Actions.sks */,
+				7A1106812149C3DC002A0047 /* Player.swift */,
+				7AA3B36A214B1D5800C4AA80 /* Game.swift */,
+				7A1106872149D341002A0047 /* StorageManager.swift */,
+				7A11068C2149DFE0002A0047 /* Car.swift */,
+				7AA3B368214AD47200C4AA80 /* Button.swift */,
+				7A11067F2149C176002A0047 /* States */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A1106702149BE2E002A0047 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A1106612149BD78002A0047 /* Main.storyboard */,
+				7A110692214AC6BB002A0047 /* PauseScreen.swift */,
+				7A110694214AC7EB002A0047 /* HUD.swift */,
+				7AA3B375214B8D0D00C4AA80 /* SBKButton.swift */,
+				7AC9C154214B9C2000C4A83E /* GameCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A1106712149BE3A002A0047 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7AA3B373214B7AA300C4AA80 /* MainMenuViewController.swift */,
+				7A11065F2149BD78002A0047 /* GameViewController.swift */,
+				7AA3B36F214B779800C4AA80 /* MatchmakingViewController.swift */,
+				7AA3B377214B982F00C4AA80 /* CreateGameViewController.swift */,
+				7AA3B371214B79D000C4AA80 /* MultiplayerGameViewController.swift */,
+				7A1106722149BE4C002A0047 /* Scenes */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7A1106722149BE4C002A0047 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7A11065D2149BD78002A0047 /* GameScene.swift */,
+				7A1106592149BD78002A0047 /* GameScene.sks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7A11067F2149C176002A0047 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				7A1106752149BF79002A0047 /* StoplightStateMachine.swift */,
+				7A110690214A3256002A0047 /* LightState.swift */,
+				7A1106772149C06B002A0047 /* PausedState.swift */,
+				7A1106792149C0DE002A0047 /* RedState.swift */,
+				7A11067B2149C0E5002A0047 /* YellowState.swift */,
+				7A11067D2149C0ED002A0047 /* GreenState.swift */,
+				7A1106852149D112002A0047 /* GameOverState.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		7AA3B36C214B532000C4AA80 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7AA3B36D214B533E00C4AA80 /* MultiplayerNetworking.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +257,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A11067E2149C0ED002A0047 /* GreenState.swift in Sources */,
+				7AA3B36B214B1D5800C4AA80 /* Game.swift in Sources */,
+				7AA3B374214B7AA300C4AA80 /* MainMenuViewController.swift in Sources */,
 				7A11065E2149BD78002A0047 /* GameScene.swift in Sources */,
+				7A11067C2149C0E5002A0047 /* YellowState.swift in Sources */,
+				7AA3B372214B79D000C4AA80 /* MultiplayerGameViewController.swift in Sources */,
+				7A1106882149D341002A0047 /* StorageManager.swift in Sources */,
+				7A1106762149BF79002A0047 /* StoplightStateMachine.swift in Sources */,
+				7A110695214AC7EB002A0047 /* HUD.swift in Sources */,
 				7A1106602149BD78002A0047 /* GameViewController.swift in Sources */,
+				7AA3B376214B8D0D00C4AA80 /* SBKButton.swift in Sources */,
+				7AC9C155214B9C2000C4A83E /* GameCell.swift in Sources */,
+				7A1106782149C06B002A0047 /* PausedState.swift in Sources */,
+				7AA3B36E214B533E00C4AA80 /* MultiplayerNetworking.swift in Sources */,
+				7A110693214AC6BB002A0047 /* PauseScreen.swift in Sources */,
+				7A1106862149D112002A0047 /* GameOverState.swift in Sources */,
+				7A11067A2149C0DE002A0047 /* RedState.swift in Sources */,
+				7AA3B370214B779800C4AA80 /* MatchmakingViewController.swift in Sources */,
+				7A110691214A3256002A0047 /* LightState.swift in Sources */,
+				7A1106822149C3DC002A0047 /* Player.swift in Sources */,
 				7A1106582149BD78002A0047 /* AppDelegate.swift in Sources */,
+				7A11068D2149DFE0002A0047 /* Car.swift in Sources */,
+				7AA3B378214B982F00C4AA80 /* CreateGameViewController.swift in Sources */,
+				7AA3B369214AD47200C4AA80 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77TV63F6JF;
 				INFOPLIST_FILE = "Stoplight Buggies 2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,6 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77TV63F6JF;
 				INFOPLIST_FILE = "Stoplight Buggies 2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

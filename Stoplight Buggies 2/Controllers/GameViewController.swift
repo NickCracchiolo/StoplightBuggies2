@@ -11,16 +11,20 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    var storageManager:StorageManager!
+    var player:Player!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
+                scene.scaleMode = .resizeFill
+                scene.storageManager = self.storageManager
+                scene.player = self.player
+                scene.anchorPoint = CGPoint(x: 0, y: 0)
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -37,11 +41,7 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override var prefersStatusBarHidden: Bool {
