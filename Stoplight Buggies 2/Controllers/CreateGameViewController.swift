@@ -9,45 +9,101 @@
 import UIKit
 import MultipeerConnectivity
 
-class CreateGameViewController: UIViewController {
+class CreateGameViewController: UITableViewController {
     var storageManager:StorageManager!
     var player:Player!
-    lazy var networking = MultiplayerNetworking(withPlayer: self.player)
+    var players:[MCPeerID] = []
+    var peers:[MCPeerID] = []
+    var networking:MultiplayerNetworking!
+    let sectionHeaders:[String] = ["Accepted Players", "Players to Invite"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networking.createSession(withDelegate: self)
-        networking.advertise(withDelegate: self)
+        addBarButtons()
+        networking.delegate = self
+        networking.createSession()
+        networking.browse()
+    }
+    private func reload() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    private func addBarButtons() {
+        let playButton = UIBarButtonItem(title: "Play", style: .done, target: self, action: #selector(beginGame(_:)))
+        self.navigationItem.rightBarButtonItem = playButton
+    }
+    
+    @objc func beginGame(_ sender:UIBarButtonItem) {
+        if (networking.session?.connectedPeers.count ?? 0) > 0 {
+            self.performSegue(withIdentifier: "MultiplayerGameSegue", sender: nil)
+        }
     }
 }
 
-extension CreateGameViewController: MCNearbyServiceAdvertiserDelegate {
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        print("Invitation from: \(peerID.displayName)")
+extension CreateGameViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 1) {
+            networking.invite(peer: peers[indexPath.row])
+        }
     }
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionHeaders[section]
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return players.count
+        default:
+            return peers.count
+        }
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell") as? GameCell {
+            switch indexPath.section {
+            case 0:
+                cell.nameLabel.text = players[indexPath.row].displayName
+            default:
+                cell.nameLabel.text = peers[indexPath.row].displayName
+            }
+            return cell
+        }
+        return UITableViewCell()
+    }
+}
+
+extension CreateGameViewController: MultiplayerNetworkingDelegate {
+    func foundPeer(withID id: MCPeerID, info: [String : String]?) {
+        print("Found Peer")
+        peers.append(id)
+        reload()
+    }
+    
+    func peerLeft(withID id: MCPeerID) {
+        print("Peer Left")
+        peers.removeAll { (id) -> Bool in
+            return id == id
+        }
+        reload()
+    }
+    
+    func recievedInvite(fromPeer peer: MCPeerID, inviteHandler: @escaping (Bool, MCSession?) -> Void) {
+
+    }
+    
+    func connected(withPeer peer: MCPeerID) {
+        print("Connected with: \(peer.displayName)")
+        self.players.append(peer)
+        self.peers.removeAll { (id) -> Bool in
+            return id == peer
+        }
+        reload()
+    }
+    
+    func networkFailure(withError error: Error) {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension CreateGameViewController: MCSessionDelegate {
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        print("Session did change state: \(state)")
-    }
-    
-    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        print("Session did recieve data from \(peerID.displayName)")
-    }
-    
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-        print("Session did recieve stream: \(streamName) from \(peerID.displayName)")
-    }
-    
-    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-        print("Session did start receieving resource: \(resourceName) from \(peerID.displayName)")
-    }
-    
-    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-        print("Session did finish receiving resource: \(resourceName) from \(peerID.displayName)")
     }
 }

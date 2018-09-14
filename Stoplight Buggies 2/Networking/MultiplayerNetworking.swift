@@ -8,12 +8,21 @@
 
 import MultipeerConnectivity
 
-class MultiplayerNetworking {
-    private var session:MCSession?
+protocol MultiplayerNetworkingDelegate: class {
+    func foundPeer(withID id:MCPeerID, info: [String:String]?)
+    func peerLeft(withID id:MCPeerID)
+    func recievedInvite(fromPeer peer:MCPeerID, inviteHandler: @escaping (Bool, MCSession?) -> Void)
+    func connected(withPeer peer:MCPeerID)
+    func networkFailure(withError error:Error)
+}
+
+class MultiplayerNetworking:NSObject {
+    weak var delegate:MultiplayerNetworkingDelegate?
+    var session:MCSession?
     private var advertiser:MCNearbyServiceAdvertiser?
     private var browser:MCNearbyServiceBrowser?
     private var player:Player
-    private var peer:MCPeerID
+    private let peer:MCPeerID
     private let serviceType = "slb-game"
     
     init(withPlayer p:Player) {
@@ -21,58 +30,90 @@ class MultiplayerNetworking {
         self.peer = MCPeerID(displayName: p.name)
     }
     
-    func createSession(withDelegate delegate:MCSessionDelegate) {
-        let peer = MCPeerID(displayName: self.player.name)
-        self.session = MCSession(peer: peer)
-        self.session!.delegate = delegate
+    func createSession() {
+        self.session = MCSession(peer: self.peer)
+        self.session!.delegate = self
+        if self.session?.myPeerID != peer {
+            print("Peers not equal")
+        }
     }
     
-    func browse(withDelegate delegate:MCNearbyServiceBrowserDelegate) {
+    func browse() {
         self.browser = MCNearbyServiceBrowser(peer: self.peer, serviceType: self.serviceType)
-        self.browser!.delegate = delegate
+        self.browser!.delegate = self
         self.browser!.startBrowsingForPeers()
     }
     
-    func advertise(withDelegate delegate:MCNearbyServiceAdvertiserDelegate) {
-        self.advertiser = MCNearbyServiceAdvertiser(peer: peer, discoveryInfo: nil, serviceType: serviceType)
-        self.advertiser!.delegate = delegate
+    func stopBrowsing() {
+        self.browser?.stopBrowsingForPeers()
+    }
+    
+    func advertise() {
+        self.advertiser = MCNearbyServiceAdvertiser(peer: self.peer, discoveryInfo: nil, serviceType: serviceType)
+        self.advertiser!.delegate = self
         self.advertiser!.startAdvertisingPeer()
     }
     
-    func connect(toPeer peerID:MCPeerID) {
+    func stopAdvertising() {
+        self.advertiser?.stopAdvertisingPeer()
+    }
+    
+    func invite(peer peerID:MCPeerID) {
         if let b = self.browser, let s = self.session {
             b.invitePeer(peerID, to: s, withContext: nil, timeout: 30)
         }
     }
     
-    func sendGameState(state:AnyClass) {
-        if state is GreenState.Type {
-            self.sendState(state: "green")
-        } else if state is YellowState.Type {
-            self.sendState(state: "yellow")
-        } else if state is RedState.Type {
-            self.sendState(state: "red")
+}
+
+extension MultiplayerNetworking: MCSessionDelegate {
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        print("Session did change state")
+        switch state {
+        case .notConnected:
+            print("Not Connected")
+        case .connecting:
+            print("Connecting")
+        case .connected:
+            print("Connected")
+            self.delegate?.connected(withPeer: peerID)
         }
     }
     
-    private func stream() {
-        
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        print("Session did recieve data from \(peerID.displayName)")
     }
     
-    private func sendState(state: String, object: AnyObject? = nil) {
-        guard let s = session else {
-            return
-        }
-        var rootObject: [String: Any] = ["state": state]
-        if let object = object {
-            rootObject["object"] = object
-        }
-        let data = NSKeyedArchiver.archivedData(withRootObject: rootObject)
-        do {
-            try s.send(data, toPeers: s.connectedPeers, with: .reliable)
-        } catch {
-            print("Error sending state to peers")
-        }
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+        print("Session did recieve stream: \(streamName) from \(peerID.displayName)")
     }
     
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+        print("Session did start receieving resource: \(resourceName) from \(peerID.displayName)")
+    }
+    
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+        print("Session did finish receiving resource: \(resourceName) from \(peerID.displayName)")
+    }
+}
+
+extension MultiplayerNetworking: MCNearbyServiceAdvertiserDelegate {
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        self.delegate?.recievedInvite(fromPeer: peerID, inviteHandler:invitationHandler)
+    }
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
+        self.delegate?.networkFailure(withError: error)
+    }
+}
+
+extension MultiplayerNetworking: MCNearbyServiceBrowserDelegate {
+    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
+        self.delegate?.foundPeer(withID: peerID, info: info)
+    }
+    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+        self.delegate?.peerLeft(withID: peerID)
+    }
+    func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
+        self.delegate?.networkFailure(withError: error)
+    }
 }

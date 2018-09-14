@@ -67,68 +67,56 @@
                     </view>
                     <navigationItem key="navigationItem" id="vGv-E0-tnf"/>
                     <connections>
-                        <segue destination="NFv-mZ-oPn" kind="show" identifier="JoinMultiplayerGameSegue" id="JPb-RE-qI2"/>
-                        <segue destination="ZAb-b5-Coa" kind="show" identifier="CreateMultiplayerGameSegue" id="UiW-jS-uJH"/>
+                        <segue destination="VS7-9f-lPc" kind="show" identifier="CreateMultiplayerGameSegue" id="CpH-ga-vz5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdG-Pg-o2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1071" y="1"/>
         </scene>
-        <!--Matchmaking View Controller-->
-        <scene sceneID="Nmo-Nr-lzX">
+        <!--Create Game View Controller-->
+        <scene sceneID="qiN-ni-Pce">
             <objects>
-                <tableViewController id="NFv-mZ-oPn" customClass="MatchmakingViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="anj-0G-SkH">
+                <tableViewController id="VS7-9f-lPc" customClass="CreateGameViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3hO-II-DsU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" id="DBh-Zt-etn" customClass="GameCell" customModule="Stoplight_Buggies_2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" id="gaw-Mc-PlH" customClass="GameCell" customModule="Stoplight_Buggies_2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DBh-Zt-etn" id="lF5-Vs-XFn">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gaw-Mc-PlH" id="joc-jQ-0ny">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AI-D9-UO4">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNL-l0-pKM">
+                                            <rect key="frame" x="16" y="11.333333333333336" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="TNL-l0-pKM" secondAttribute="trailing" constant="16" id="R0K-MH-lO2"/>
+                                        <constraint firstItem="TNL-l0-pKM" firstAttribute="leading" secondItem="joc-jQ-0ny" secondAttribute="leading" constant="16" id="bkp-06-SrN"/>
+                                        <constraint firstItem="TNL-l0-pKM" firstAttribute="centerY" secondItem="joc-jQ-0ny" secondAttribute="centerY" id="m28-2Z-bou"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nameLabel" destination="4AI-D9-UO4" id="fVR-65-5ri"/>
+                                    <outlet property="nameLabel" destination="TNL-l0-pKM" id="9zn-Um-2Vu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="NFv-mZ-oPn" id="VQ7-Ec-SCS"/>
-                            <outlet property="delegate" destination="NFv-mZ-oPn" id="RdD-Dd-RAk"/>
+                            <outlet property="dataSource" destination="VS7-9f-lPc" id="3FU-G1-b8T"/>
+                            <outlet property="delegate" destination="VS7-9f-lPc" id="O4X-87-PzU"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bw5-eU-dBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93R-AL-YI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-223" y="719"/>
-        </scene>
-        <!--Create Game View Controller-->
-        <scene sceneID="P8n-X2-jl1">
-            <objects>
-                <viewController id="ZAb-b5-Coa" customClass="CreateGameViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OFX-37-WNl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="JyC-dG-w5M"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PUp-Ya-LVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-223" y="1"/>
+            <point key="canvasLocation" x="-223.19999999999999" y="-16.256157635467982"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
