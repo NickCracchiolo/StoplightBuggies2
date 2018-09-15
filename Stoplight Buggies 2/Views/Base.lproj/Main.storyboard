@@ -15,18 +15,22 @@
             <objects>
                 <viewController id="jaY-XH-L7g" customClass="MainMenuViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4xl-Sc-9ij">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stoplight Buggies  2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twe-Mj-XTl">
-                                <rect key="frame" x="56" y="111" width="263" height="74"/>
+                                <rect key="frame" x="56" y="23" width="263" height="74"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc0-u8-axl">
-                                <rect key="frame" x="149.66666666666666" y="413" width="76" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xc0-u8-axl" customClass="SBKButton" customModule="Stoplight_Buggies_2" customModuleProvider="target">
+                                <rect key="frame" x="147.66666666666666" y="305" width="80" height="80"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xc0-u8-axl" secondAttribute="height" multiplier="1:1" id="819-CT-BPq"/>
+                                    <constraint firstAttribute="height" constant="80" id="mBd-9P-IZC"/>
+                                </constraints>
                                 <state key="normal" title="Multiplayer">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -34,16 +38,24 @@
                                     <action selector="multiplayerButtonClicked:" destination="jaY-XH-L7g" eventType="touchUpInside" id="cSz-fy-wAr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySs-is-AVC">
-                                <rect key="frame" x="159" y="531" width="57" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySs-is-AVC" customClass="SBKButton" customModule="Stoplight_Buggies_2" customModuleProvider="target">
+                                <rect key="frame" x="147.66666666666666" y="443" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="RTx-7P-JWZ"/>
+                                    <constraint firstAttribute="width" secondItem="ySs-is-AVC" secondAttribute="height" multiplier="1:1" id="jYh-cJ-4Gk"/>
+                                </constraints>
                                 <state key="normal" title="Settings">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-zN-ydU">
-                                <rect key="frame" x="143" y="296" width="89" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-zN-ydU" customClass="SBKButton" customModule="Stoplight_Buggies_2" customModuleProvider="target">
+                                <rect key="frame" x="147.66666666666666" y="168" width="80" height="80"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="dn6-yr-W6A"/>
+                                    <constraint firstAttribute="width" secondItem="Z3Y-zN-ydU" secondAttribute="height" multiplier="1:1" id="elK-mZ-69V"/>
+                                </constraints>
                                 <state key="normal" title="Single Player">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -52,16 +64,17 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Xc0-u8-axl" firstAttribute="top" secondItem="Z3Y-zN-ydU" secondAttribute="bottom" constant="87" id="GCa-bu-aJ4"/>
-                            <constraint firstItem="ySs-is-AVC" firstAttribute="top" secondItem="Xc0-u8-axl" secondAttribute="bottom" constant="88" id="QPI-oF-Dfb"/>
-                            <constraint firstItem="Xc0-u8-axl" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="S3J-5D-Xc2"/>
-                            <constraint firstItem="Z3Y-zN-ydU" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="URB-0s-aSE"/>
+                            <constraint firstItem="Xc0-u8-axl" firstAttribute="centerY" secondItem="4jQ-AU-TIh" secondAttribute="centerY" id="24m-hL-8nR"/>
+                            <constraint firstItem="Z3Y-zN-ydU" firstAttribute="top" relation="lessThanOrEqual" secondItem="Twe-Mj-XTl" secondAttribute="bottom" constant="71" id="Aud-yh-ccV"/>
+                            <constraint firstItem="ySs-is-AVC" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="JJH-4Z-Ldx"/>
+                            <constraint firstItem="ySs-is-AVC" firstAttribute="top" secondItem="Xc0-u8-axl" secondAttribute="bottom" constant="58" id="PgU-8n-DUv"/>
+                            <constraint firstItem="Z3Y-zN-ydU" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="SBu-oB-0VL"/>
+                            <constraint firstItem="Xc0-u8-axl" firstAttribute="top" secondItem="Z3Y-zN-ydU" secondAttribute="bottom" constant="57" id="UbK-Yl-KSU"/>
+                            <constraint firstItem="Xc0-u8-axl" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="XKx-bj-JCh"/>
                             <constraint firstItem="Twe-Mj-XTl" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="hWV-QH-urA"/>
-                            <constraint firstItem="ySs-is-AVC" firstAttribute="centerX" secondItem="4jQ-AU-TIh" secondAttribute="centerX" id="npA-Qc-EEd"/>
                             <constraint firstItem="Twe-Mj-XTl" firstAttribute="top" secondItem="4jQ-AU-TIh" secondAttribute="top" constant="23" id="oQk-Oo-bGX"/>
-                            <constraint firstItem="Xc0-u8-axl" firstAttribute="centerY" secondItem="4jQ-AU-TIh" secondAttribute="centerY" constant="-5" id="qoI-3G-BIz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4jQ-AU-TIh"/>
                     </view>
@@ -72,14 +85,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdG-Pg-o2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="1"/>
+            <point key="canvasLocation" x="-1071.2" y="0.73891625615763545"/>
         </scene>
         <!--Create Game View Controller-->
         <scene sceneID="qiN-ni-Pce">
             <objects>
                 <tableViewController id="VS7-9f-lPc" customClass="CreateGameViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3hO-II-DsU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -113,17 +126,20 @@
                             <outlet property="delegate" destination="VS7-9f-lPc" id="O4X-87-PzU"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Og4-a2-5fn" kind="show" identifier="MultiplayerGameSegue" id="z8W-ra-Ios"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93R-AL-YI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-223.19999999999999" y="-16.256157635467982"/>
+            <point key="canvasLocation" x="-223" y="1"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
@@ -138,9 +154,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ipA-dO-IqT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qQp-gs-CM8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="qQp-gs-CM8">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -150,6 +167,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWr-Bb-XXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1887" y="1"/>
+        </scene>
+        <!--Multiplayer Game View Controller-->
+        <scene sceneID="reY-oS-N3u">
+            <objects>
+                <viewController id="Og4-a2-5fn" customClass="MultiplayerGameViewController" customModule="Stoplight_Buggies_2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Ra-Yr-drN" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="EtD-YY-Ufk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KQs-KG-jmf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="1"/>
         </scene>
     </scenes>
 </document>

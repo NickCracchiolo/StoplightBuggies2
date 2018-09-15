@@ -24,6 +24,17 @@ class CreateGameViewController: UITableViewController {
         networking.createSession()
         networking.browse()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "" {
+            if let vc = segue.destination as? MultiplayerGameViewController {
+                vc.networking = self.networking
+                vc.player = self.player
+                vc.storageManager = self.storageManager
+            }
+        }
+    }
+    
     private func reload() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -35,7 +46,7 @@ class CreateGameViewController: UITableViewController {
     }
     
     @objc func beginGame(_ sender:UIBarButtonItem) {
-        if (networking.session?.connectedPeers.count ?? 0) > 0 {
+        if (networking.session?.connectedPeers.count ?? 0) > 1 {
             self.performSegue(withIdentifier: "MultiplayerGameSegue", sender: nil)
         }
     }

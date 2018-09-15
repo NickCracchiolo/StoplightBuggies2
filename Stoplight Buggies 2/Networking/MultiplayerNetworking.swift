@@ -24,6 +24,7 @@ class MultiplayerNetworking:NSObject {
     private var player:Player
     private let peer:MCPeerID
     private let serviceType = "slb-game"
+    var isHost:Bool = false
     
     init(withPlayer p:Player) {
         self.player = p
@@ -61,6 +62,16 @@ class MultiplayerNetworking:NSObject {
     func invite(peer peerID:MCPeerID) {
         if let b = self.browser, let s = self.session {
             b.invitePeer(peerID, to: s, withContext: nil, timeout: 30)
+        }
+    }
+    
+    func sendGameState(state:GameState) {
+        var packet = StatePacket.init(state: state.rawValue)
+        let data = Data(bytes: &packet, count: 1)
+        do {
+            try session?.send(data, toPeers: session?.connectedPeers ?? [], with: .unreliable)
+        } catch {
+            print("Error sending state")
         }
     }
     

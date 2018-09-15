@@ -1,16 +1,17 @@
 //
-//  GameScene.swift
+//  MultiplayerGameSegue.swift
 //  Stoplight Buggies 2
 //
-//  Created by Nick Cracchiolo on 9/12/18.
+//  Created by Nick Cracchiolo on 9/14/18.
 //  Copyright © 2018 Nick Cracchiolo. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 import QuartzCore
+import MultipeerConnectivity
 
-class GameScene: SKScene {
+class MultiplayerGameScene: SKScene {
     private enum Positions {
         case background
         case racetrack
@@ -39,8 +40,9 @@ class GameScene: SKScene {
     
     
     lazy var stateMachine = StoplightStateMachine(withScene: self)
-    var player:Player!
+    var networking:MultiplayerNetworking!
     var storageManager:StorageManager!
+    var player:Player!
     lazy var trackWidth:CGFloat = self.frame.width * 0.75
     lazy var startPosition:CGPoint = CGPoint(x: self.frame.midX, y: self.frame.midY / 4)
     var displayLink: CADisplayLink!
@@ -91,10 +93,31 @@ class GameScene: SKScene {
         return node
     }()
     
+    lazy var lanes:[SKSpriteNode] = {
+        let count = self.networking.session?.connectedPeers.count ?? 2
+        var nodes:[SKSpriteNode] = []
+        let size = CGSize(width: 10, height: self.frame.height)
+        for i in 0..<(count - 1) {
+            var x:CGFloat = self.frame.midX
+            if (count - 1) == 3 {
+                x = self.frame.midX + ((trackWidth / 4.0) * CGFloat(pow(-1.0, Double(i + 1))))
+            } else {
+                x = (self.frame.midX / (trackWidth / 2.0)) + ((trackWidth / 2.0) * CGFloat(i + 1))
+            }
+            let n = SKSpriteNode(color: .yellow, size: size)
+            n.zPosition = Positions.racetrack.z()
+            n.anchorPoint = CGPoint(x: 0.5, y: 0)
+            n.position = CGPoint(x: x, y: 0)
+            nodes.append(n)
+        }
+        return nodes
+    }()
+    
     lazy var hud = HUD(withScene: self, zPosition: Positions.hud.z())
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        networking.delegate = self
         self.physicsWorld.contactDelegate = self
         self.addChild(self.racetrack)
         self.addChild(self.finishLine)
@@ -113,6 +136,17 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         self.stateMachine.update(deltaTime: currentTime)
+        if networking.isHost {
+            if let state = self.stateMachine.currentState {
+                if state is RedState {
+                    networking.sendGameState(state: GameState.red)
+                } else if state is YellowState {
+                    networking.sendGameState(state: GameState.yellow)
+                } else if state is GreenState {
+                    networking.sendGameState(state: GameState.green)
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -211,14 +245,38 @@ class GameScene: SKScene {
     }
 }
 
-extension GameScene: SKPhysicsContactDelegate {
+extension MultiplayerGameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         self.displayLink.invalidate()
         self.stateMachine.enter(GameOverState.self)
         print("Total Time: " + String(format: "%0.2f", self.time))
         print("Number of resets: \(self.resets)")
-        let game = Game(id: self.player.games.count, resets: self.resets, time: self.time, car: Car.green.imageName())
-        self.player.games.append(game)
-        self.storageManager.save(object: self.player)
+//        let game = Game(id: self.player.games.count, resets: self.resets, time: self.time, car: Car.green.imageName())
+//        self.player.games.append(game)
+//        self.storageManager.save(object: self.player)
     }
+}
+
+extension MultiplayerGameScene: MultiplayerNetworkingDelegate {
+    func foundPeer(withID id: MCPeerID, info: [String : String]?) {
+        <#code#>
+    }
+    
+    func peerLeft(withID id: MCPeerID) {
+        <#code#>
+    }
+    
+    func recievedInvite(fromPeer peer: MCPeerID, inviteHandler: @escaping (Bool, MCSession?) -> Void) {
+        <#code#>
+    }
+    
+    func connected(withPeer peer: MCPeerID) {
+        <#code#>
+    }
+    
+    func networkFailure(withError error: Error) {
+        <#code#>
+    }
+    
+    
 }

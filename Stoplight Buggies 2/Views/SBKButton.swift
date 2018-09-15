@@ -12,6 +12,7 @@ class SBKButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.cornerRadius = 5.0
+        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+
     }
 }

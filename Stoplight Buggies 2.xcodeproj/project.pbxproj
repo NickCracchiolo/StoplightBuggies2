@@ -35,6 +35,10 @@
 		7AA3B376214B8D0D00C4AA80 /* SBKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B375214B8D0D00C4AA80 /* SBKButton.swift */; };
 		7AA3B378214B982F00C4AA80 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3B377214B982F00C4AA80 /* CreateGameViewController.swift */; };
 		7AC9C155214B9C2000C4A83E /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9C154214B9C2000C4A83E /* GameCell.swift */; };
+		7AC9C157214C703900C4A83E /* MultiplayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9C156214C703900C4A83E /* MultiplayerGameScene.swift */; };
+		7AC9C159214C708000C4A83E /* MultiplayerGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7AC9C158214C708000C4A83E /* MultiplayerGameScene.sks */; };
+		7AC9C15B214C833C00C4A83E /* StatePacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9C15A214C833C00C4A83E /* StatePacket.swift */; };
+		7AC9C15D214C837000C4A83E /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC9C15C214C837000C4A83E /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		7AA3B375214B8D0D00C4AA80 /* SBKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBKButton.swift; sourceTree = "<group>"; };
 		7AA3B377214B982F00C4AA80 /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		7AC9C154214B9C2000C4A83E /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		7AC9C156214C703900C4A83E /* MultiplayerGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameScene.swift; sourceTree = "<group>"; };
+		7AC9C158214C708000C4A83E /* MultiplayerGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MultiplayerGameScene.sks; sourceTree = "<group>"; };
+		7AC9C15A214C833C00C4A83E /* StatePacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePacket.swift; sourceTree = "<group>"; };
+		7AC9C15C214C837000C4A83E /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,8 @@
 			children = (
 				7A11065D2149BD78002A0047 /* GameScene.swift */,
 				7A1106592149BD78002A0047 /* GameScene.sks */,
+				7AC9C156214C703900C4A83E /* MultiplayerGameScene.swift */,
+				7AC9C158214C708000C4A83E /* MultiplayerGameScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -162,6 +172,7 @@
 		7A11067F2149C176002A0047 /* States */ = {
 			isa = PBXGroup;
 			children = (
+				7AC9C15C214C837000C4A83E /* GameState.swift */,
 				7A1106752149BF79002A0047 /* StoplightStateMachine.swift */,
 				7A110690214A3256002A0047 /* LightState.swift */,
 				7A1106772149C06B002A0047 /* PausedState.swift */,
@@ -177,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				7AA3B36D214B533E00C4AA80 /* MultiplayerNetworking.swift */,
+				7AC9C15A214C833C00C4A83E /* StatePacket.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -240,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1106632149BD78002A0047 /* Main.storyboard in Resources */,
+				7AC9C159214C708000C4A83E /* MultiplayerGameScene.sks in Resources */,
 				7A11065A2149BD78002A0047 /* GameScene.sks in Resources */,
 				7A1106652149BD79002A0047 /* Assets.xcassets in Resources */,
 				7A1106682149BD79002A0047 /* LaunchScreen.storyboard in Resources */,
@@ -262,11 +275,14 @@
 				7AA3B372214B79D000C4AA80 /* MultiplayerGameViewController.swift in Sources */,
 				7A1106882149D341002A0047 /* StorageManager.swift in Sources */,
 				7A1106762149BF79002A0047 /* StoplightStateMachine.swift in Sources */,
+				7AC9C157214C703900C4A83E /* MultiplayerGameScene.swift in Sources */,
 				7A110695214AC7EB002A0047 /* HUD.swift in Sources */,
 				7A1106602149BD78002A0047 /* GameViewController.swift in Sources */,
 				7AA3B376214B8D0D00C4AA80 /* SBKButton.swift in Sources */,
+				7AC9C15B214C833C00C4A83E /* StatePacket.swift in Sources */,
 				7AC9C155214B9C2000C4A83E /* GameCell.swift in Sources */,
 				7A1106782149C06B002A0047 /* PausedState.swift in Sources */,
+				7AC9C15D214C837000C4A83E /* GameState.swift in Sources */,
 				7AA3B36E214B533E00C4AA80 /* MultiplayerNetworking.swift in Sources */,
 				7A110693214AC6BB002A0047 /* PauseScreen.swift in Sources */,
 				7A1106862149D112002A0047 /* GameOverState.swift in Sources */,
